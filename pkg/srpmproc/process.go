@@ -58,11 +58,11 @@ import (
 )
 
 const (
-	RpmPrefixCentOS     = "https://git.centos.org/rpms"
+	RpmPrefixCentOS     = "file:///srv/git/pushtest/"
 	ModulePrefixCentOS  = "https://git.centos.org/modules"
-	RpmPrefixRocky      = "https://git.rockylinux.org/staging/rpms"
-	ModulePrefixRocky   = "https://git.rockylinux.org/staging/modules"
-	UpstreamPrefixRocky = "https://git.rockylinux.org/staging"
+	RpmPrefixRocky      = "http://dev-ysh-test002-ncl/pagure/rpms"
+	ModulePrefixRocky   = "http://dev-ysh-test002-ncl/pagure/modules"
+	UpstreamPrefixRocky = "http://dev-ysh-test002-ncl/pagure/staging"
 )
 
 type ProcessDataRequest struct {
@@ -139,7 +139,7 @@ func NewProcessData(req *ProcessDataRequest) (*data.ProcessData, error) {
 		req.BranchPrefix = "r"
 	}
 	if req.CdnUrl == "" && !req.AltLookAside {
-		req.CdnUrl = "https://git.centos.org/sources"
+		req.CdnUrl = "file:///srv/cache/lookaside2"
 	}
 	// If altlookaside is enabled, and the CdnUrl hasn't been changed, then automatically set it to the default
 	// CentOS Stream (the new pattern very much won't work with the old git.centos.org/sources site)
